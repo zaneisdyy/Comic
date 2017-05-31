@@ -39,25 +39,17 @@ class ComicSpider(scrapy.Spider):
 
         #下一页漫画地址
         page_tag = soup.find_all('div', attrs={'class':'navigation'})[0]
-        print('cccccccccccccc')
-        print(page_tag)
-
         page_url_tag = page_tag.find_all('a')[-1]
         page_url = page_url_tag['href']
-        print('bbbbbbbbbbbbbbb')
-        print(page_url)
+
         #最后一页
         if page_url_tag.next_sibling == '最后一页了':
-            print('!!!Last pages!!!')
+           pass
         else:
             url = 'http://manhua.fzdm.com/131/' + self.title +'/'+ page_url
-            print(url)
             yield scrapy.Request(url, callback=self.comic_parse)
 
     def jpg_save(self, jpg_url):
-        print('ddddddddddddddd')
-        print(jpg_url)
-
         path = "D://Dyy//Study//python//PythonProjects//scrapy//ComicGetter//" + jpg_url.split('/')[-1]
         jpg_url = 'http:' + jpg_url
         r = requests.get(jpg_url)
