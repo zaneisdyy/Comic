@@ -56,4 +56,5 @@ class ComicSpider(scrapy.Spider):
         with open(path, 'wb') as f:
             f.write(r.content)
             f.close()
+            #
 
