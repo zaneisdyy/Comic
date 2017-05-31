@@ -32,8 +32,6 @@ class ComicSpider(scrapy.Spider):
         #单个页面上获取图片地址
         jpg_key = 'mhpic'
         jpg_tag = soup.find('img', attrs={'id':jpg_key})
-        print('aaaaaaaaaaaaaaa')
-        print(jpg_tag)
         jpg_url = jpg_tag['src'] 
         
         #图片保存到本地
